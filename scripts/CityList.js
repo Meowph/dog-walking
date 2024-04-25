@@ -7,7 +7,11 @@ document.addEventListener(
     "click",
     (clickEvent) => {
         const cityTarget = clickEvent.target
+
+        if (cityTarget.dataset.type === "city") {
         window.alert(`${cityTarget.dataset.walkername} is servicing this city`)
+
+        }
     }
 )
 
@@ -15,10 +19,8 @@ document.addEventListener(
 export const CityList = () => {
     let citiesHTML = "<ul>"
 
-    for (const currentWalker of walkers) {
-        citiesHTML += `<li data-walkername = "${currentWalker.name}">
-        ${currentWalker.city}
-        </li>`
+    for (const walker of walkers) {
+        citiesHTML += `<li data-type="city" data-walkername="${walker.name}">${walker.city}</li>`
     }
 
     citiesHTML += "</ul>"
